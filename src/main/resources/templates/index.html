@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyFilmik</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+<header th:insert="/patern/header :: header"></header>
+    <div class="main">
+        <div class="row">
+            <div class="small-columns">
+                <div class="main-content">
+                    <div class="page page-new">
+                        <div class="head-wrapper">
+                            <div class="heading-with">
+                                <div class="page-title"> Выбор</div>
+                                <div class="data-wrapper"> <!--media-->
+                                    <div class="data">
+                                        <a class="item" href="">
+                                            <span>Сегодня</span>
+                                        </a>
+                                        <a class="item" href="">
+                                            <span>Вчера</span>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="page-content">
+                            <div class="list-content">
+                                <div data-key="2021-04-12 <!--по дате-->"  class="film-group">
+                                    <div class="film-group-name">
+                                        <span>Сегодня</span>
+                                    </div>
+                                    <ul class="film-list"   >
+                                        <li th:each="film : ${Film}">
+                                            <div class="item">
+                                                <div class="item-film">
+                                                    <div class="film-top">
+                                                        <div class="field-img"> <!--style="background-image: url(../../resources/static/images/start.jpg);"-->
+<!--                                                            <img th:src="@{../static/images/start.jpg}"/>-->
+                                                            <a th:href="@{onefilm/{id}(id= ${film.id})}"><img class="field-img" th:src="@{'../static/images/' + ${film.filename}}" onerror="this.src='../static/images/defolt/no_image.jpg'"/></a>
+                                                        </div>
+                                                        <div class="icon-play" >
+                                                            <!--<img th:src="@{'../static/images/' + ${film.filename}}"/>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="film-bottom">
+                                                        <div class="filed-title">
+                                                            <a href="" th:text="${film.film_name}"> </a><br>
+                                                            <!--<a href=""> <span th:text="${film.filename}"></span> </a>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <footer th:insert="patern/footer :: footer"></footer>
+</div>
+<!--<script src="/js/main.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thyme leaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>MyFilmik</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper foot-bot">
+    <header th:insert="/patern/header :: header"></header>
+    <div class="row">
+        <div class="small-columns">
+            <div class="updel">
+                <div style="display: flex;">
+                <a th:href="@{/film/{id}(id=${film.id})}">Редактировать</a>
+                <a th:href="@{/delete/{id}(id=${film.id})}" type="submit">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-center">
+        <div class="wrapper-add wrapper-video">
+            <div class="form-box form-box-genre" ><!--th:each="film, iStat : ${Film}"-->
+                <h1 th:text="${film.film_name}">Фильм</h1>
+<!--                <span th:text=" ${iStat.count}"></span>-->
+<!--                <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">-->
+                <div>
+                    <video class="input-box-video" controls="controls" th:poster="@{'../static/images/' + ${film.filename}}">
+                        <source th:src="@{'static/video/' + ${film.film}}" type='video/ogg; codecs="theora, vorbis"'>
+                        <source th:src="@{'/static/video/' + ${film.film}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' src="">
+<!--                    <source src="../static/video/e9e8da54-304d-40b5-b3f2-2259de938843.~Love.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>-->
+                        <source th:src="@{'static/video/' + ${film.film}}" type='video/webm; codecs="vp8, vorbis"'>
+                        Тег video не поддерживается вашим браузером.
+<!--                        <a href="video/duel.mp4">Скачайте видео</a>.-->
+                    </video>
+                </div>
+               <h4> <p> Жанр:</h4></p>
+                <p th:text="${film.genre}"></p>
+                <h4> <p> Описание:</h4></p>
+                <p th:text="${film.full_text}"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer th:insert="patern/footer :: footer"></footer>
+
+</div>
+<!--<div th:insert="blocks/footer :: footer"></div>-->
+</body>
+</html>

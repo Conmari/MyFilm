@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thyme leaf.org">
+<head>
+    <title>MyFilmik</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="/patern/header :: header"></header>
+    <div class="wrapper-center">
+        <div class="wrapper-add wrapper-pravila">
+            <div class="form-box">
+                <h1>правила на сайте</h1>
+                <p>Правила для всех пользователей сайта MyFilmik</p>
+
+            </div>
+        </div>
+    </div>
+    <footer th:insert="patern/footer :: footer"></footer>
+
+</div>
+<!--<div th:insert="blocks/footer :: footer"></div>-->
+</body>
+</html>

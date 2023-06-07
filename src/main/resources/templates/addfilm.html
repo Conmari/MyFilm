@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thyme leaf.org">
+<head>
+    <title>5лoг caйтa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+<header th:insert="/patern/header :: header"></header>
+    <div class="wrapper-center">
+        <div class="wrapper-add">
+            <div class="form-box">
+                <h1>Добавление Фильма</h1>
+                <form action="/addfilm" method="post" enctype="multipart/form-data">
+                    <div class="input-box">
+                        <input class="text-class" name="film_name" type="text" placeholder="Введи название">
+                    </div>
+                    <div class="input-box">
+                        <input class="text-class" name="genre" type="text" placeholder="Введи жанр">
+                    </div>
+                    <div class="input-box">
+                        <textarea class="text-class" name="full_text" placeholder="Введи описание"></textarea>
+                    </div>
+                    <div class="input-box-file">
+                        <label for="files" class="text-class">Главная картинка</label>
+                        <input  id="files"  class="text-class" type="file" name="file">
+                    </div>
+                    <div class="input-box-file">
+                        <label for="files-film" class="text-class">Видеоролик</label>
+                        <input  id="files-film"  class="text-class" type="file" name="file_video">
+                    </div>
+                    <button  type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer th:insert="patern/footer :: footer"></footer>
+</div>
+    <!--<div th:insert="blocks/footer :: footer"></div>-->
+    </body>
+</html>

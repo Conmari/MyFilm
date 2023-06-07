@@ -1,0 +1,50 @@
+<div class="header" th:fragment="header" >
+    <div class="row">
+        <div class="small-columns">
+            <h1 class="logo"> MyFilmik</h1>
+            <div class="header-content">
+
+                <nav >
+                    <ul>
+                        <li>
+                            <a th:href="@{/addfilm}">Главная</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/film}">Фильмы</a>
+                        </li>
+                        <li>
+                            <a th:href="@{#}">Новости</a>
+                        </li>
+                    </ul>
+                </nav>
+<!---->
+<!--                <div class="block-ajax-search">-->
+<!--                    <div class="ajax-search-container">-->
+<!--                        <div class="wrap">-->
+<!--                            <form autocomplete="off" method="get" action="/">-->
+<!--                                <input type="hidden" name="do" value="search">-->
+<!--                                <input type="hidden" name="subaction" value="search">-->
+<!--                                <button type="submit" class="ajax-inp-a">-->
+<!--                                    <span class="icon-search"></span>-->
+<!--                                </button>-->
+<!--                                <input type="text" name="story" class="ajax-inp" placeholder="Поиск">-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="response-container"></div>-->
+<!--                </div>-->
+<!---->
+                <div class="box-right">
+                    <div class="login">
+                        <div class="info">
+                            <div class="help">
+                                <span class="text1">Поиск</span>
+                                <span class="text">вход</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

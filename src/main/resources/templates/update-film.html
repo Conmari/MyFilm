@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thyme leaf.org">
+<head>
+    <title>MyFilmik</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="/patern/header :: header"></header>
+    <div class="wrapper-center">
+        <div class="wrapper-add">
+            <div class="form-box">
+                <h1>Редактирование Фильма</h1>
+                <form action="#" method="post" enctype="multipart/form-data"
+                      th:action="@{/update/{id}(id=${film.id})}"
+                      th:object="${film}">
+                    <div class="input-box">
+                        <input class="text-class" th:field="*{film_name}" name="film_name" type="text" placeholder="Введи название">
+                        <span th:if="${#fields.hasErrors('film_name')}" th:errors="*{film_name}"></span>
+                    </div>
+                    <div class="input-box">
+                        <input class="text-class" th:field="*{genre}" name="genre" type="text" placeholder="Введи жанр">
+                        <span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+                    </div>
+                    <div class="input-box">
+                        <textarea class="text-class" th:field="*{full_text}" name="full_text" placeholder="Введи описание"></textarea>
+                        <span th:if="${#fields.hasErrors('full_text')}" th:errors="*{full_text}"></span>
+                    </div>
+
+<!--                    Требуется исправить обновление файлов FilmController-->
+                    <!--<div class="input-box-file">
+                        <label for="files" class="text-class">Главная картинка</label>
+                        <input  id="files"  class="text-class" th:field="*{filename}" type="file" name="file">
+                        <span th:if="${#fields.hasErrors('filename')}" th:errors="*{filename}"></span>
+                    </div>
+                    <div class="input-box-file">
+                        <label for="files-film" class="text-class">Видеоролик</label>
+                        <input  id="files-film"  class="text-class" th:field="*{film}" type="file" name="file_video">
+                    </div>-->
+                    <button  type="submit">Добавить</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <footer th:insert="patern/footer :: footer"></footer>
+</div>
+<!--<div th:insert="blocks/footer :: footer"></div>-->
+</body>
+</html>
