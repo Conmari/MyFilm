@@ -13,6 +13,7 @@ import scari.corp.MyFilm.repo.FilmRepo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -122,5 +123,16 @@ public class FilmController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         filmRepo.delete(film);
         return "redirect:/film";
+    }
+
+    @RequestMapping(path = {"/","/search"})
+    public String home(Film film, Model model, String keyword) {
+        if(keyword!=null) {
+            List<Film> list = filmRepo.findByKeyword(keyword);
+            model.addAttribute("list", list);
+        }else {
+            List<Film> list = filmRepo.findAllActiveUsersNative();
+            model.addAttribute("list", list);}
+        return "search";
     }
 }

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>MyFilmik</title>
-   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="wrapper">
-<header th:insert="/patern/header :: header"></header>
+    <header th:insert="/patern/header :: header"></header>
     <div class="main">
         <div class="row">
             <div class="small-columns">
@@ -35,12 +35,11 @@
                                         <span>Сегодня</span>
                                     </div>
                                     <ul class="film-list"   >
-                                        <li th:each="film : ${Film}">
+                                        <li th:each="film : ${list}" >
                                             <div class="item">
                                                 <div class="item-film">
                                                     <div class="film-top">
-                                                        <div class="field-img"> <!--style="background-image: url(../../resources/static/images/start.jpg);"-->
-<!--                                                            <img th:src="@{../static/images/start.jpg}"/>-->
+                                                        <div class="field-img">
                                                             <a th:href="@{onefilm/{id}(id= ${film.id})}"><img class="field-img" th:src="@{'../static/images/' + ${film.filename}}" onerror="this.src='../static/images/defolt/no_image.jpg'"/></a>
                                                         </div>
                                                         <div class="icon-play" >
