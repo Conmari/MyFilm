@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<html lang="en" >-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8">
     <title>MyFilmik</title>
@@ -41,7 +43,8 @@
                                                     <div class="film-top">
                                                         <div class="field-img"> <!--style="background-image: url(../../resources/static/images/start.jpg);"-->
 <!--                                                            <img th:src="@{../static/images/start.jpg}"/>-->
-                                                            <a th:href="@{onefilm/{id}(id= ${film.id})}"><img class="field-img" th:src="@{'../static/images/' + ${film.filename}}" onerror="this.src='../static/images/defolt/no_image.jpg'"/></a>
+                                                            <a th:href="@{film/{id}(id= ${film.id})}"><img class="field-img" th:src="@{'../static/images/' + ${film.filename}}" onerror="this.src='../static/images/defolt/no_image.jpg'"/></a>
+<!--                                                            <a th:href="@{film/{id}(id= ${film.id})}"><img class="field-img" th:src="@{'../static/images/' + ${film.filename}}" /></a>-->
                                                         </div>
                                                         <div class="icon-play" >
                                                             <!--<img th:src="@{'../static/images/' + ${film.filename}}"/>-->
@@ -71,7 +74,7 @@
 
         </div>
     </div>
-    <footer th:insert="patern/footer :: footer"></footer>
+    <footer class="footer-relative" th:insert="patern/footer :: footer"></footer>
 </div>
 <!--<script src="/js/main.js"></script>-->
 </body>

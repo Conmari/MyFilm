@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thyme leaf.org">
 <head>
-    <title>5лoг caйтa</title>
+    <title>MyFilmik</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="wrapper">
@@ -12,7 +12,7 @@
         <div class="wrapper-add">
             <div class="form-box">
                 <h1>Добавление Фильма</h1>
-                <form action="/addfilm" method="post" enctype="multipart/form-data">
+                <form action="#" th:action="@{/addfilm}" method="post" enctype="multipart/form-data">
                     <div class="input-box">
                         <input class="text-class" name="film_name" type="text" placeholder="Введи название">
                     </div>

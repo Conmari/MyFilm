@@ -21,6 +21,6 @@ public interface FilmRepo extends JpaRepository<Film, Long>{
     @Query(
             value = "SELECT * FROM film u WHERE   u.film_name LIKE '%'",
             nativeQuery = true)
-    List<Film> findAllActiveUsersNative();
+    List<Film> findAllFilm();
 
 }

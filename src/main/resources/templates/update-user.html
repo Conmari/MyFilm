@@ -6,8 +6,8 @@
 </head>
 <body>
 <form action="#"
-      th:action="@{/update/{id}(id=${uer.id})}"
-      th:object="${uer}"
+      th:action="@{/updateuser/{id}(id=${user.id})}"
+      th:object="${user}"
       method="post">
     <label for="name">Name</label>
     <input type="text" th:field="*{name}" id="name" placeholder="Name">

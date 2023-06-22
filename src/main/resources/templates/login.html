@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>MyFilmik</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+  <header th:insert="/patern/header :: header"></header>
+  <div class="wrapper-center">
+    <div class="wrapper-add">
+      <div class="form-box">
+        <h1>Вход</h1>
+<!--        <form action="/addfilm" method="post" enctype="multipart/form-data">-->
+<!--          <div class="input-box">-->
+<!--            <input class="text-class" name="film_name" type="text" placeholder="Введи название">-->
+<!--          </div>-->
+<!--          <button  type="submit">Добавить</button>-->
+<!--        </form>-->
+
+        <div th:if="${param.error}">
+          Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+          You have been logged out.
+        </div>
+        <form th:action="@{/login}" method="post">
+<!--          <div class="input-box"><label> User Name : <input type="text" name="username"/> </label></div>-->
+          <div class="input-box"><input class="text-class" name="username" type="text" placeholder="Логин "></div>
+<!--          <div  class="input-box"><label> Password: <input type="password" name="password"/> </label></div>-->
+          <div  class="input-box"><input class="text-class" name="password" type="password" placeholder="Пароль"></div>
+<!--          <div><input type="submit" value="Sign In"/></div>-->
+            <div class="updel edit">
+                <button type="submit">Войти</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer th:insert="patern/footer :: footer"></footer>
+</div>
+<!--<div th:insert="blocks/footer :: footer"></div>-->
+</body>
+</html>

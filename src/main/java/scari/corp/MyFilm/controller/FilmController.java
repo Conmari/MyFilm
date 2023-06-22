@@ -33,7 +33,7 @@ public class FilmController {
     private String uploadPathFilm;
 
     @GetMapping("/")
-    public String ViewActualInformationS(Model model) {
+    public String ViewActualInformationFilm(Model model) {
         Iterable<Film> Film = filmRepo.findAll();
         model.addAttribute("Film", Film);
         return "index";
@@ -44,34 +44,35 @@ public class FilmController {
         model.addAttribute("Film", Film);
         return "index";
     }
-    @GetMapping("/film/{id}") /*Обновление(Редактирование фильма)*/
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+    @GetMapping("/onefilm/{id}") /*Обновление(Редактирование фильма)*/
+    public String showUpdateFormFilm(@PathVariable("id") long id, Model model) {
         Film film = filmRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
         model.addAttribute("film", film);
-        return "update-film";
+        return "film/update-film";
     }
-    @GetMapping("/onefilm/{id}") /*Обновление*/
-    public String showUpdateForm1(@PathVariable("id") long id, Model model) {
+    @GetMapping("/film/{id}") /*Просмотр конкретного id*/
+    public String showFormFilm(@PathVariable("id") long id, Model model) {
         Film film = filmRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
         model.addAttribute("film", film);
-        return "onefilm";
+        return "film/onefilm";
     }
 
     @GetMapping("/addfilm")
-    public String add(Model model) {
-        return "addfilm";
+    public String addFilm(Model model) {
+        return "film/addfilm";
     }
+
     @GetMapping("/pravila")
     public String pravila(Model model) {
-        return "pravila";
+        return "rules/pravila";
     }
 
     @PostMapping("/addfilm")
-    public String postAdd(
+    public String postAddFilm(
             @RequestParam String film_name,
             @RequestParam String genre,
             @RequestParam String full_text,
@@ -106,33 +107,33 @@ public class FilmController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") long id, @Valid Film film,
+    public String updateFilm(@PathVariable("id") long id, @Valid Film film,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             film.setId(id);
-            return "update-film";
+            return "film/update-film";
         }
 
         filmRepo.save(film);
-        return "redirect:/film";
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id, Model model) {
+    public String deleteFilm(@PathVariable("id") long id, Model model) {
         Film film = filmRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         filmRepo.delete(film);
-        return "redirect:/film";
+        return "redirect:/";
     }
 
     @RequestMapping(path = {"/","/search"})
-    public String home(Film film, Model model, String keyword) {
+    public String searchFilm(Film film, Model model, String keyword) {
         if(keyword!=null) {
             List<Film> list = filmRepo.findByKeyword(keyword);
             model.addAttribute("list", list);
         }else {
-            List<Film> list = filmRepo.findAllActiveUsersNative();
+            List<Film> list = filmRepo.findAllFilm();
             model.addAttribute("list", list);}
-        return "search";
+        return "search/search";
     }
 }

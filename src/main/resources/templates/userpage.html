@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thyme leaf.org">
+<head>
+    <title>MyFilmik</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="/patern/header :: header"></header>
+    <div class="wrapper-center">
+        <div class="wrapper-add">
+            <div class="form-box">
+                <form th:object="${user}" method="post">
+                    <h1 th:text = "${user.name}">Пользователь</h1>
+                    <!--          <div class="input-box"><label> User Name : <input type="text" name="username"/> </label></div>-->
+                    <div class="input-box"><input class="text-class" name="username" type="text" placeholder="User Name "></div>
+                    <!--          <div  class="input-box"><label> Password: <input type="password" name="password"/> </label></div>-->
+                    <div  class="input-box"><input class="text-class" name="password" type="password" placeholder="Password"></div>
+                    <!--          <div><input type="submit" value="Sign In"/></div>-->
+                    <div class="updel edit">
+                        <div style="display: flex;">
+                            <a th:href="@{/edituser/{id}(id=${user.id})}">Edit</a></td>
+                        </div>
+                    </div>
+<!--                    <button th:href="@{/edituser/{id}(id=${user.id})}" type="submit">Редактировать</button>-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer th:insert="patern/footer :: footer"></footer>
+</div>
+<!--<div th:insert="blocks/footer :: footer"></div>-->
+</body>
+</html>
